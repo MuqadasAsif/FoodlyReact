@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="../FoodDeliveryWeb/FoodDeliveryWeb.csproj" />
+  <Project Path="../MenuService/MenuService.csproj" />
+  <Project Path="../OrderService/OrderService.csproj" />
+  <Project Path="../RestaurantService/RestaurantService.csproj" />
+  <Project Path="DeliveryService.csproj" />
+</Solution>

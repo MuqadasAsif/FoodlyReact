@@ -1,0 +1,78 @@
+﻿
+@model List<FoodDeliveryWeb.Models.Restaurant>
+
+@{
+    ViewData["Title"] = "All Restaurants";
+}
+
+<link rel="stylesheet" href="~/css/restaurant.css" />
+
+<section class="restaurants">
+
+    <div class="section-header">
+
+        <div>
+            <p class="eyebrow">
+                DISCOVER
+            </p>
+
+            <h2>
+                All Restaurants
+            </h2>
+        </div>
+
+        <a asp-controller="Restaurant"
+           asp-action="Index">
+            ← Back to Home
+        </a>
+
+    </div>
+
+    <div class="restaurant-grid">
+
+        @foreach (var restaurant in Model)
+        {
+            <div class="restaurant-card">
+
+                <div class="food-image">
+
+                    <img src="@restaurant.ImageUrl"
+                         alt="@restaurant.Name" />
+
+                    <span class="rating">
+                        ⭐ @restaurant.Rating
+                    </span>
+
+                </div>
+
+                <div class="card-content">
+
+                    <h3>
+                        @restaurant.Name
+                    </h3>
+
+                    <p>
+                        @restaurant.Address
+                    </p>
+
+                    <div class="card-bottom">
+
+                        <span>
+                            @(restaurant.IsOpen ? "Open now" : "Closed")
+                        </span>
+
+                        <button>
+                            View
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</section>
+

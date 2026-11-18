@@ -1,0 +1,209 @@
+﻿@model List<FoodDeliveryWeb.Models.OrderWithDeliveryViewModel>
+
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<link rel="stylesheet" href="~/css/Order.css" />
+
+<header class="navbar">
+
+    <div class="logo">
+        Foodly
+    </div>
+
+    <nav>
+        <a asp-controller="Restaurant" asp-action="Index">
+            Home
+        </a>
+
+        <a asp-controller="Restaurant" asp-action="AllRestaurants">
+            Restaurants
+        </a>
+
+        <a asp-controller="Order" asp-action="Index" class="active">
+            Orders
+        </a>
+    </nav>
+
+    <button class="cart-btn">
+        Cart
+    </button>
+
+</header>
+
+
+<section class="orders-section">
+
+    <div class="orders-header">
+
+        <div>
+            <p class="eyebrow">
+                YOUR ORDERS
+            </p>
+
+            <h1>
+                Order History
+            </h1>
+
+            <p class="orders-subtitle">
+                Keep track of your delicious orders in one place.
+            </p>
+        </div>
+
+        <a asp-controller="Restaurant"
+           asp-action="Index"
+           class="back-btn">
+            ← Browse Restaurants
+        </a>
+
+    </div>
+
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="orders-grid">
+
+            @foreach (var order in Model)
+            {
+                <div class="order-card">
+
+                    <div class="order-top">
+
+                        <span class="order-number">
+                            Order #@order.Order.Id
+                        </span>
+
+                        <span class="order-status">
+                            @order.DeliveryStatus
+                        </span>
+
+                    </div>
+
+
+                    <div class="order-content">
+
+                        <div class="order-icon">
+                            🍽️
+                        </div>
+
+                        <div class="order-info">
+
+                            <h2>
+                                @order.Order.ItemName
+                            </h2>
+
+                            <p>
+                                Customer: @order.Order.CustomerName
+                            </p>
+
+                            <p>
+                                Restaurant ID: @order.Order.RestaurantId
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="order-details">
+
+                        <div>
+                            <span>Quantity</span>
+                            <strong>
+                                @order.Order.Quantity
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span>Total</span>
+                            <strong>
+                                Rs. @order.Order.TotalAmount
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <!-- ORDER ACTIONS -->
+                    @if (order.DeliveryStatus == "Pending")
+                    {
+                        <form asp-controller="Order"
+                              asp-action="Complete"
+                              method="post"
+                              class="delete-form">
+
+                            <input type="hidden"
+                                   name="deliveryId"
+                                   value="@order.DeliveryId" />
+
+                            <button type="submit"
+                                    class="delete-btn">
+                                ✓ Order Received
+                            </button>
+
+                        </form>
+                    }
+
+
+                    <form asp-controller="Order"
+                          asp-action="Delete"
+                          method="post"
+                          class="delete-form">
+
+                        <input type="hidden"
+                               name="id"
+                               value="@order.Order.Id" />
+
+                        <button type="submit"
+                                class="delete-btn">
+                            🗑 Delete Order
+                        </button>
+
+                    </form>
+
+                </div>
+            }
+
+        </div>
+    }
+    else
+    {
+        <div class="empty-orders">
+
+            <div class="empty-icon">
+                🛍️
+            </div>
+
+            <h2>
+                No orders yet
+            </h2>
+
+            <p>
+                You haven't placed any orders yet.
+                Discover a restaurant and order something delicious.
+            </p>
+
+            <a asp-controller="Restaurant"
+               asp-action="Index"
+               class="browse-btn">
+                Browse Restaurants
+            </a>
+
+        </div>
+    }
+
+</section>
+
+
+<footer>
+
+    <div class="footer-logo">
+        Foodly
+    </div>
+
+    <p>
+        Delicious food, delivered to your door.
+    </p>
+
+</footer>

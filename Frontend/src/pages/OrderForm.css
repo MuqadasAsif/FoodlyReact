@@ -1,0 +1,90 @@
+.order-page {
+    min-height: 100vh;
+    padding: 70px 100px;
+    background-color: #f8f7f4;
+}
+
+.order-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 40px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.order-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+    .order-heading h1 {
+        margin: 0 0 10px;
+        font-size: 42px;
+        color: #3a2027;
+    }
+
+    .order-heading p {
+        margin: 0;
+        color: #666;
+    }
+
+.selected-restaurant {
+    padding: 20px;
+    margin-bottom: 30px;
+    background-color: #edeff6;
+    border-radius: 12px;
+}
+
+    .selected-restaurant h2 {
+        margin: 0 0 8px;
+        color: #6b2737;
+    }
+
+    .selected-restaurant p {
+        margin: 0;
+        color: #666;
+    }
+
+.order-field {
+    margin-bottom: 22px;
+}
+
+    .order-field label {
+        display: block;
+        margin-bottom: 8px;
+        color: #3a2027;
+        font-weight: 600;
+    }
+
+    .order-field input {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 13px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+        outline: none;
+    }
+
+        .order-field input:focus {
+            border-color: #6b2737;
+            box-shadow: 0 0 0 3px rgba(107, 39, 55, 0.08);
+        }
+
+.place-order-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #6b2737;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+    .place-order-btn:hover {
+        background-color: #54202d;
+    }
